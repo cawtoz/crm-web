@@ -62,17 +62,17 @@ function buildRecord($record)
         $cellsHTML .= '<td>' . $data . '</td>';
     }
 
-    $cellsHTML .= buildContextMenuButton();
+    $cellsHTML .= buildContextMenuButton($record_id);
     $recordHTML = '<tr id="record_' . $record_id . '">' . $cellsHTML . '</tr>';
 
     return $recordHTML;
 }
 
-function buildContextMenuButton()
+function buildContextMenuButton($record_id)
 {
     $contextMenuButton = '
         <td>
-            <button class="context-menu-button">
+            <button class="context-menu-button" onClick="handlerContextMenuButton(' . $record_id . ')">
                 <img src="/public/icons/more.svg">
             </button>
         </td>
@@ -100,14 +100,26 @@ function buildContextMenu()
 
 ?>
 
-
-
 <link rel="stylesheet" href="/components/table/table.css">
 
 <body>
     <script>
         function selectRecord(record_id) {
             document.getElementById(`record_${record_id}`).classList.toggle("selected-record");
+        }
+
+        let contextMenu = null;
+
+        function handlerContextMenuButton(record_id) {
+            if (!contextMenu) {
+                var tds = document.getElementById(`record_${record_id}`).getElementsByTagName("td");
+                const lastTd = tds[tds.length - 1];
+                lastTd.innerHTML += <?php echo json_encode(buildContextMenu()); ?>;
+                contextMenu = lastTd.getElementsByClassName("context-menu")[0];
+            } else {
+                contextMenu.remove();
+                contextMenu = null;
+            }
         }
     </script>
 </body>
