@@ -1,0 +1,14 @@
+body {
+  font-family: montserrat;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex-grow: 1;
+}
+
+main {
+  flex-grow: 1;
+}
