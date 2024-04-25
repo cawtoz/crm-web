@@ -3,3 +3,8 @@ main {
   justify-content: center;
   align-items: center;
 }
+
+.table-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

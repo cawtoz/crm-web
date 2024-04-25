@@ -1,5 +1,5 @@
 <?php
-$title = "Customers";
+$title = "Clientes";
 include "../../../global.php";
 include "../../../components/table/table.php";
 include "../../../components/footer/footer.php";
@@ -7,17 +7,22 @@ include "../../../components/footer/footer.php";
 $headers = [
     [],
     ["text" => "Id"],
-    ["img" => "/public/icons/user.svg", "text" => "Nombre"],
-    ["img" => "/public/icons/email.svg", "text" => "Correo"],
-    ["img" => "/public/icons/phone.svg", "text" => "Telefono"],
-    [""]
+    ["text" => "Nombre"],
+    ["text" => "Correo electrónico"],
+    ["text" => "Teléfono"],
+    ["text" => "Dirección"],
+    ["text" => "Ciudad"],
+    ["text" => "País"],
+    []
 ];
 
-$table = table("Customers", $headers, [
-    [1, "Alejandro", "alejandro@gmail.com", 1212121212],
-    [2, "Alejandro", "alejandro@gmail.com", 1212121212],
-    [3, "Alejandro", "alejandro@gmail.com", 1212121212]
-]);
+$records = [
+    [1, "Maria Jose", "mariajose@gmail.com", "123-456-7890", "Calle 12 #21-32", "Bucaramanga", "Colombia"],
+    [2, "Andre Solano", "juanmanuel@gmail.com", "987-654-3210", "Calle 32 #18-29", "Medellin", "Colombia"],
+    [3, "Juan Manuel", "juanmauel@gmail.com", "555-555-5555", "Calle 22 #27-23", "Bogota", "Colombia"]
+];
+
+$table = table($title, $headers, $records);
 
 ?>
 
